@@ -3,7 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import VaultView from './views/VaultView';
 import FlowView from './views/FlowView';
 import LimitsView from './views/LimitsView';
+import BlockadeView from './views/BlockadeView';
+import WidgetHubView from './views/WidgetHubView';
+import PermissionsView from './views/PermissionsView';
 import SelfView from './views/SelfView';
+import DownloadView from './views/DownloadView';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('vault');
@@ -16,8 +20,16 @@ export default function App() {
         return <FlowView />;
       case 'limits':
         return <LimitsView />;
+      case 'blockade':
+        return <BlockadeView />;
+      case 'widgets':
+        return <WidgetHubView />;
+      case 'permissions':
+        return <PermissionsView />;
       case 'self':
         return <SelfView />;
+      case 'download':
+        return <DownloadView />;
       default:
         return <VaultView />;
     }
@@ -27,7 +39,11 @@ export default function App() {
     { id: 'vault', label: 'Vault', icon: 'hourglass_empty' },
     { id: 'flow', label: 'Flow', icon: 'change_history' },
     { id: 'limits', label: 'Limits', icon: 'tune' },
+    { id: 'blockade', label: 'Blockade', icon: 'shield' },
+    { id: 'widgets', label: 'Widgets', icon: 'widgets' },
+    { id: 'permissions', label: 'Access', icon: 'verified_user' },
     { id: 'self', label: 'Self', icon: 'person' },
+    { id: 'download', label: 'Download', icon: 'download' },
   ];
 
   return (

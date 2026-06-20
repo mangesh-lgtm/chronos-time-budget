@@ -10,15 +10,15 @@
 
 /* ─── Color Tokens ──────────────────────────────── */
 :root {
-  --surface:                  #131315;
-  --surface-dim:              #131315;
-  --surface-container-lowest: #0e0e10;
-  --surface-container-low:    #1b1b1d;
-  --surface-container:        #1f1f21;
-  --surface-container-high:   #2a2a2b;
-  --surface-container-highest:#353436;
-  --surface-variant:          #353436;
-  --surface-bright:           #39393b;
+  --surface:                  #09090b;
+  --surface-dim:              #09090b;
+  --surface-container-lowest: #050507;
+  --surface-container-low:    #111113;
+  --surface-container:        #151517;
+  --surface-container-high:   #1f1f21;
+  --surface-container-highest:#2a2a2c;
+  --surface-variant:          #2a2a2c;
+  --surface-bright:           #303032;
 
   --primary:           #bec6e0;
   --primary-fixed:     #dae2fd;
@@ -48,7 +48,7 @@
   --outline:            #909097;
   --outline-variant:    #45464d;
 
-  --background: #131315;
+  --background: #09090b;
   --on-background: #e4e2e4;
 }
 
@@ -160,9 +160,15 @@ body {
   box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.2);
   border-radius: 20px 20px 0 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
   padding: 8px 16px max(16px, env(safe-area-inset-bottom));
+  overflow-x: auto;
+  gap: 8px;
+  -webkit-overflow-scrolling: touch;
+}
+.app-bottomnav::-webkit-scrollbar {
+  display: none;
 }
 
 .nav-item {
@@ -170,7 +176,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  padding: 8px 20px;
+  padding: 8px 10px;
   border-radius: 100px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -178,7 +184,7 @@ body {
   color: var(--on-surface-variant);
   border: none;
   background: transparent;
-  min-width: 64px;
+  min-width: 60px;
 }
 
 .nav-item.active {
@@ -293,6 +299,19 @@ body {
   0%, 100% { text-shadow: 0 0 20px rgba(190,198,224,0.2); }
   50%       { text-shadow: 0 0 40px rgba(190,198,224,0.5), 0 0 80px rgba(190,198,224,0.2); }
 }
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+@keyframes border-pulse-red {
+  0%, 100% { border-color: rgba(255, 180, 171, 0.25); box-shadow: 0 0 0px rgba(255, 180, 171, 0); }
+  50% { border-color: rgba(255, 180, 171, 0.7); box-shadow: 0 0 15px rgba(255, 180, 171, 0.3); }
+}
+@keyframes shimmer-emerald {
+  0%, 100% { border-color: rgba(16, 185, 129, 0.25); box-shadow: 0 0 0px rgba(16, 185, 129, 0); }
+  50% { border-color: rgba(16, 185, 129, 0.7); box-shadow: 0 0 15px rgba(16, 185, 129, 0.3); }
+}
 
 .animate-breathe   { animation: breathe 8s ease-in-out infinite; }
 .animate-float     { animation: float 6s ease-in-out infinite; }
@@ -300,6 +319,9 @@ body {
 .animate-slide-up  { animation: slide-up 0.4s ease both; }
 .animate-fade-in   { animation: fade-in 0.3s ease both; }
 .animate-count-glow { animation: count-glow 4s ease-in-out infinite; }
+.animate-shake      { animation: shake 0.4s ease-in-out; }
+.animate-pulse-red  { animation: border-pulse-red 2s infinite ease-in-out; }
+.animate-shimmer-emerald { animation: shimmer-emerald 2s infinite ease-in-out; }
 
 /* ─── Liquid Progress Bar ───────────────────────── */
 .liquid-progress {
