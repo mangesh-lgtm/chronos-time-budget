@@ -529,3 +529,87 @@ body {
 .transition-card:hover {
   background: var(--surface-container-high);
 }
+
+/* ─── Responsive Desktop Overrides ──────────────── */
+@media (min-width: 768px) {
+  .app-shell {
+    max-width: 100%;
+    flex-direction: row;
+    height: 100vh;
+  }
+  
+  .app-topbar {
+    position: fixed;
+    left: 0;
+    transform: none;
+    width: 260px;
+    height: 72px;
+    border-bottom: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(19, 19, 21, 0.95);
+    padding: 0 24px;
+  }
+  
+  .app-bottomnav {
+    position: fixed;
+    top: 72px;
+    bottom: 0;
+    left: 0;
+    transform: none;
+    width: 260px;
+    height: calc(100% - 72px);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 8px;
+    padding: 24px 16px;
+    border-top: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 0;
+    background: rgba(19, 19, 21, 0.95);
+  }
+  
+  .nav-item {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 16px;
+    padding: 14px 20px;
+    width: 100%;
+    border-radius: 16px;
+  }
+  
+  .nav-label {
+    font-size: 13px;
+    font-weight: 700;
+  }
+  
+  .app-content {
+    padding-left: 260px;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 100vh;
+    overflow-y: auto;
+    width: 100%;
+  }
+
+  .view-scroll {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    align-items: start;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 32px;
+  }
+  
+  /* Layout constraints for grid components */
+  .view-scroll > section {
+    grid-column: span 2;
+  }
+
+  /* Make large bento blocks span full width on desktop if needed */
+  .view-scroll > .full-width-card {
+    grid-column: span 2;
+  }
+}
+
