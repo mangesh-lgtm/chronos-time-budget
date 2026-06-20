@@ -1,49 +1,29 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import VaultView from './views/VaultView';
-import FlowView from './views/FlowView';
-import LimitsView from './views/LimitsView';
+import FocusView from './views/FocusView';
 import BlockadeView from './views/BlockadeView';
-import WidgetHubView from './views/WidgetHubView';
-import PermissionsView from './views/PermissionsView';
-import SelfView from './views/SelfView';
-import DownloadView from './views/DownloadView';
+import SetupView from './views/SetupView';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('vault');
+  const [activeTab, setActiveTab] = useState('focus');
 
   const renderActiveView = () => {
     switch (activeTab) {
-      case 'vault':
-        return <VaultView />;
-      case 'flow':
-        return <FlowView />;
-      case 'limits':
-        return <LimitsView />;
+      case 'focus':
+        return <FocusView />;
       case 'blockade':
         return <BlockadeView />;
-      case 'widgets':
-        return <WidgetHubView />;
-      case 'permissions':
-        return <PermissionsView />;
-      case 'self':
-        return <SelfView />;
-      case 'download':
-        return <DownloadView />;
+      case 'setup':
+        return <SetupView />;
       default:
-        return <VaultView />;
+        return <FocusView />;
     }
   };
 
   const navItems = [
-    { id: 'vault', label: 'Vault', icon: 'hourglass_empty' },
-    { id: 'flow', label: 'Flow', icon: 'change_history' },
-    { id: 'limits', label: 'Limits', icon: 'tune' },
-    { id: 'blockade', label: 'Blockade', icon: 'shield' },
-    { id: 'widgets', label: 'Widgets', icon: 'widgets' },
-    { id: 'permissions', label: 'Access', icon: 'verified_user' },
-    { id: 'self', label: 'Self', icon: 'person' },
-    { id: 'download', label: 'Download', icon: 'download' },
+    { id: 'focus', label: 'Focus', icon: 'hourglass_empty' },
+    { id: 'blockade', label: 'App Control', icon: 'shield' },
+    { id: 'setup', label: 'Setup', icon: 'verified_user' },
   ];
 
   return (
@@ -87,7 +67,7 @@ export default function App() {
       </main>
 
       {/* ── Bottom Navigation ── */}
-      <nav className="app-bottomnav">
+      <nav className="app-bottomnav" style={{ justifyContent: 'space-around' }}>
         {navItems.map((item) => {
           const isActive = activeTab === item.id;
           return (
